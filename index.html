@@ -3,134 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soluciones Tecnológicas & Bot Automatizado</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Desarrollo de Software & Automatización</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fuente Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        .bg-cyber { background-color: #09090b; }
-        .text-gradient {
-            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        body { font-family: 'Inter', sans-serif; background-color: #09090b; }
+        /* Canvas Matrix / Binary Background */
+        #binaryCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.25;
+            pointer-events: none;
         }
     </style>
 </head>
-<body class="bg-cyber text-slate-100 font-sans antialiased selection:bg-purple-500 selection:text-white">
+<body class="bg-zinc-950 text-slate-100 antialiased selection:bg-purple-900 selection:text-white">
 
     <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 bg-zinc-950/80 backdrop-blur-md border-b border-purple-900/20">
+    <nav class="fixed top-0 w-full z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800/80">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-black tracking-wider text-white">
-                DESARROLLO<span class="text-purple-500">.DEV</span>
+            <a href="#" class="text-sm font-mono tracking-widest text-white uppercase">
+                &lt;DESARROLLO<span class="text-purple-400">.DEV</span>/&gt;
             </a>
-            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
-                <a href="#demos" class="hover:text-purple-400 transition-colors">Ejemplos Web</a>
-                <a href="#bot-demo" class="hover:text-purple-400 transition-colors">Bot Interactivo</a>
-                <a href="#contacto" class="hover:text-purple-400 transition-colors">Contacto</a>
+            <div class="hidden md:flex space-x-8 text-xs font-medium text-slate-400">
+                <a href="#soluciones" class="hover:text-white transition-colors">Soluciones</a>
+                <a href="#desarrollos" class="hover:text-white transition-colors">Sistemas</a>
+                <a href="#bot-demo" class="hover:text-white transition-colors">Demostración</a>
+                <a href="#resenas" class="hover:text-white transition-colors">Evaluaciones</a>
+                <a href="#contacto" class="hover:text-white transition-colors">Contacto</a>
             </div>
-            <a href="https://wa.me/5493541232593?text=Hola,%20quiero%20consultar%20por%20un%20proyecto" target="_blank" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-5 py-2 rounded-full font-semibold text-sm shadow-lg shadow-purple-500/25 hover:opacity-90 transition-all">
-                Probar Demo
+            <a href="https://wa.me/5493541232593?text=Hola,%20requiero%20asesoramiento%20tecnico" target="_blank" class="bg-zinc-900 border border-zinc-700 hover:border-purple-500 text-white px-4 py-2 rounded-lg font-mono text-xs transition-all">
+                CONSULTAR
             </a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section con Lluvia Binaria de Fondo -->
     <section class="min-h-screen pt-32 pb-20 px-6 flex flex-col justify-center items-center text-center relative overflow-hidden">
-        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px] pointer-events-none"></div>
         
-        <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-purple-950/80 border border-purple-500/30 text-purple-300 mb-6 tracking-wide uppercase">
-            ⚡ Automatizaciones & Software a Medida
-        </span>
-        
-        <h1 class="text-4xl sm:text-6xl font-black tracking-tight max-w-4xl text-white leading-tight mb-6">
-            Llevá tu negocio al siguiente nivel con <span class="text-gradient">Webs & Bots Inteligentes</span>
-        </h1>
-        
-        <p class="text-slate-400 text-lg max-w-2xl mb-8">
-            Desarrollamos soluciones de software, páginas web de alta conversión y automatizaciones de WhatsApp para responder consultas 24/7 y multiplicar tus ventas.
-        </p>
+        <!-- Canvas para la cascada binaria -->
+        <canvas id="binaryCanvas"></canvas>
 
-        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <a href="https://wa.me/5493541232593?text=Hola,%20quiero%20probar%20la%20demo%20del%20bot" target="_blank" class="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-xl font-bold text-center shadow-lg shadow-purple-600/30 transition-all flex items-center justify-center gap-2">
-                <span>💬 Probar Bot en Vivo</span>
-            </a>
-            <a href="#demos" class="bg-zinc-900 border border-zinc-700 hover:border-purple-500 text-white px-8 py-4 rounded-xl font-bold text-center transition-all">
-                Ver Trabajos
-            </a>
-        </div>
-    </section>
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <span class="inline-block px-3 py-1 rounded-md text-xs font-mono bg-zinc-900 border border-zinc-800 text-purple-400 mb-6 tracking-wide">
+                SYSTEMS & SOFTWARE ENGINEERING
+            </span>
+            
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
+                Desarrollo de Software, Sistemas Web & Arquitectura de Bots
+            </h1>
+            
+            <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+                Diseño e implementación de plataformas web escalables, integración de APIs y automatización de procesos de atención al cliente mediante agentes virtuales.
+            </p>
 
-    <!-- Carrusel de Ejemplos de Webs -->
-    <section id="demos" class="py-20 px-6 max-w-7xl mx-auto border-t border-purple-900/20">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl font-black text-white sm:text-4xl">Ejemplos de <span class="text-gradient">Páginas Web</span></h2>
-            <p class="text-slate-400 mt-2">Diseños modernos, rápidos y optimizados para cualquier rubro.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Card 1 -->
-            <div class="bg-zinc-950 border border-purple-900/30 rounded-2xl overflow-hidden hover:border-purple-500/60 transition-all group">
-                <div class="h-48 bg-gradient-to-br from-purple-900/40 to-pink-900/40 flex items-center justify-center text-4xl">
-                    🛍️
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-white mb-2">E-Commerce & Tiendas</h3>
-                    <p class="text-slate-400 text-sm mb-4">Catálogo de productos, carrito de compras e integración directa con WhatsApp y pasarelas de pago.</p>
-                    <span class="text-xs font-semibold text-purple-400">Perfecto para: Indumentaria, Tecnología, Locales.</span>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="bg-zinc-950 border border-purple-900/30 rounded-2xl overflow-hidden hover:border-purple-500/60 transition-all group">
-                <div class="h-48 bg-gradient-to-br from-blue-900/40 to-purple-900/40 flex items-center justify-center text-4xl">
-                    🏢
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-white mb-2">Inmobiliarias & Servicios</h3>
-                    <p class="text-slate-400 text-sm mb-4">Muestra de propiedades, filtros interactivos y formulario directo para coordinar visitas.</p>
-                    <span class="text-xs font-semibold text-purple-400">Perfecto para: Inmobiliarias, Estudios, Consultoras.</span>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="bg-zinc-950 border border-purple-900/30 rounded-2xl overflow-hidden hover:border-purple-500/60 transition-all group">
-                <div class="h-48 bg-gradient-to-br from-pink-900/40 to-rose-900/40 flex items-center justify-center text-4xl">
-                    🍕
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-white mb-2">Gastronomía & Menú QR</h3>
-                    <p class="text-slate-400 text-sm mb-4">Carta digital interactiva con pedidos automáticos directos a la cocina o a WhatsApp.</p>
-                    <span class="text-xs font-semibold text-purple-400">Perfecto para: Restaurantes, Bares, Deliveries.</span>
-                </div>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://wa.me/5493541232593?text=Hola,%20quiero%20probar%20la%20demo" target="_blank" class="bg-purple-600 hover:bg-purple-700 text-white px-7 py-3.5 rounded-lg font-medium text-sm transition-all shadow-lg shadow-purple-900/30">
+                    Probar Demostración
+                </a>
+                <a href="#soluciones" class="bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-slate-300 px-7 py-3.5 rounded-lg font-medium text-sm transition-all">
+                    Ver Especificaciones
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Simulador de Respuestas del Bot -->
-    <section id="bot-demo" class="py-20 px-6 max-w-5xl mx-auto border-t border-purple-900/20">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-black text-white sm:text-4xl">Demostración del <span class="text-gradient">Bot en Vivo</span></h2>
-            <p class="text-slate-400 mt-2">Así responde tu asistente virtual las 24 horas del día.</p>
+    <!-- Arquitectura / Soluciones -->
+    <section id="soluciones" class="py-24 px-6 max-w-7xl mx-auto border-t border-zinc-900">
+        <div class="mb-16">
+            <span class="text-xs font-mono text-purple-400 uppercase tracking-widest">// Servicios</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2">Soluciones de Software</h2>
         </div>
 
-        <div class="bg-zinc-950 border border-purple-900/40 rounded-3xl p-6 sm:p-10 shadow-2xl">
-            <div class="max-w-md mx-auto bg-zinc-900 rounded-2xl p-4 border border-zinc-800 space-y-4">
-                <!-- Mensaje Cliente -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-zinc-900/50 border border-zinc-800/80 p-8 rounded-xl hover:border-purple-500/50 transition-all">
+                <div class="text-xs font-mono text-purple-400 mb-3">01. WEB PLATFORMS</div>
+                <h3 class="text-lg font-bold text-white mb-2">Páginas Web & E-Commerce</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Desarrollo frontend responsivo optimizado para SEO, tiempos de carga mínimos y alta tasa de conversión.</p>
+            </div>
+
+            <div class="bg-zinc-900/50 border border-zinc-800/80 p-8 rounded-xl hover:border-purple-500/50 transition-all">
+                <div class="text-xs font-mono text-purple-400 mb-3">02. AUTOMATION</div>
+                <h3 class="text-lg font-bold text-white mb-2">Agentes de Conversación</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Bots para WhatsApp con lógica condicional, respuesta inmediata a preguntas frecuentes y derivación directa.</p>
+            </div>
+
+            <div class="bg-zinc-900/50 border border-zinc-800/80 p-8 rounded-xl hover:border-purple-500/50 transition-all">
+                <div class="text-xs font-mono text-purple-400 mb-3">03. INTEGRATIONS</div>
+                <h3 class="text-lg font-bold text-white mb-2">Integración de APIs & Backend</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Conexión de bases de datos, webhooks y pasarelas de pago para automatizar la gestión comercial.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulador de Bot -->
+    <section id="bot-demo" class="py-24 px-6 max-w-5xl mx-auto border-t border-zinc-900">
+        <div class="mb-12">
+            <span class="text-xs font-mono text-purple-400 uppercase tracking-widest">// Demo Interpuesta</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2">Flujo de Automatización</h2>
+        </div>
+
+        <div class="bg-zinc-900/60 border border-zinc-800 rounded-xl p-6 sm:p-10">
+            <div class="max-w-md mx-auto bg-zinc-950 rounded-lg p-4 border border-zinc-800 font-mono text-xs space-y-4">
                 <div class="flex justify-end">
-                    <div class="bg-purple-600 text-white rounded-2xl rounded-tr-none px-4 py-2 text-sm max-w-[80%]">
-                        Hola, ¿cuáles son los precios y horarios de atención?
+                    <div class="bg-purple-950/80 border border-purple-800/50 text-slate-200 rounded-lg px-3 py-2 max-w-[85%]">
+                        > Consulta: Disponibilidad y tarifas de servicios.
                     </div>
                 </div>
 
-                <!-- Mensaje Bot -->
                 <div class="flex justify-start">
-                    <div class="bg-zinc-800 text-slate-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm max-w-[85%] space-y-2 border border-zinc-700">
-                        <p>¡Hola! 👋 Gracias por comunicarte con nuestro equipo.</p>
-                        <p>📅 <strong>Horarios:</strong> Lunes a Sábado de 09:00 a 20:00 hs.</p>
-                        <p>📍 <strong>Ubicación:</strong> Atención online y presencial.</p>
+                    <div class="bg-zinc-900 border border-zinc-800 text-slate-300 rounded-lg px-3 py-2.5 max-w-[90%] space-y-2">
+                        <p class="text-purple-400">[SYSTEM]: Mensaje recibido 24/7</p>
+                        <p>Atención automatizada activa.</p>
+                        <p>Horario operativo: Lunes a Sábado - 09:00 a 20:00 HS.</p>
                         <div class="pt-2">
-                            <a href="https://wa.me/5493541232593?text=Quiero%20ver%20el%20catalogo" target="_blank" class="block text-center bg-purple-600/30 hover:bg-purple-600 border border-purple-500/50 text-purple-200 hover:text-white rounded-lg py-1.5 text-xs font-semibold transition-all">
-                                📋 Ver Catálogo Completo
+                            <a href="https://wa.me/5493541232593?text=Solicitar%20Catalogo" target="_blank" class="block text-center bg-zinc-800 hover:bg-purple-900/50 border border-zinc-700 text-white rounded py-2 transition-all">
+                                [ SOLICITAR CATÁLOGO ]
                             </a>
                         </div>
                     </div>
@@ -139,125 +135,135 @@
         </div>
     </section>
 
-    <!-- Sección de Contacto -->
-    <section id="contacto" class="py-20 px-6 max-w-4xl mx-auto border-t border-purple-900/20">
-        <div class="bg-gradient-to-b from-purple-950/40 to-zinc-950 border border-purple-500/30 rounded-3xl p-8 sm:p-12 text-center space-y-8">
-            <h2 class="text-3xl font-black text-white sm:text-4xl">¿Listo para empezar tu proyecto?</h2>
-            <p class="text-slate-300 max-w-xl mx-auto">
-                Consultanos sin compromiso. Te asesoramos para crear la página web o automatización que tu negocio necesita.
+    <!-- Reseñas -->
+    <section id="resenas" class="py-24 px-6 max-w-5xl mx-auto border-t border-zinc-900">
+        <div class="mb-12">
+            <span class="text-xs font-mono text-purple-400 uppercase tracking-widest">// Feedback</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2">Evaluaciones de Clientes</h2>
+        </div>
+
+        <div class="bg-zinc-900/40 border border-zinc-800 rounded-xl p-6 mb-12">
+            <h3 class="text-sm font-semibold text-white mb-4">Registrar Opinión</h3>
+            <form id="commentForm" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <input type="text" id="clientName" placeholder="Nombre / Empresa" required
+                        class="bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-purple-500">
+                    
+                    <div class="flex items-center gap-2 bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5">
+                        <span class="text-xs text-slate-400 font-mono">Calificación:</span>
+                        <div class="flex text-yellow-500 text-sm cursor-pointer" id="starRating">
+                            <span data-value="1">★</span>
+                            <span data-value="2">★</span>
+                            <span data-value="3">★</span>
+                            <span data-value="4">★</span>
+                            <span data-value="5">★</span>
+                        </div>
+                    </div>
+                </div>
+
+                <textarea id="clientComment" rows="3" placeholder="Detalle de la experiencia..." required
+                    class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-purple-500"></textarea>
+
+                <button type="submit" 
+                    class="bg-zinc-800 hover:bg-zinc-700 text-white font-medium px-5 py-2.5 rounded-lg text-xs transition-all border border-zinc-700">
+                    Enviar Registro
+                </button>
+            </form>
+        </div>
+
+        <div id="commentsList" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-zinc-900/30 border border-zinc-800 p-6 rounded-xl space-y-2">
+                <div class="flex justify-between items-center">
+                    <h4 class="text-sm font-semibold text-white">Marcos G. — Indumentaria</h4>
+                    <span class="text-yellow-500 text-xs">★★★★★</span>
+                </div>
+                <p class="text-slate-400 text-xs leading-relaxed">"Optimización correcta en la atención inicial de WhatsApp. Redujo los tiempos de respuesta."</p>
+            </div>
+
+            <div class="bg-zinc-900/30 border border-zinc-800 p-6 rounded-xl space-y-2">
+                <div class="flex justify-between items-center">
+                    <h4 class="text-sm font-semibold text-white">Estudio Contable V.</h4>
+                    <span class="text-yellow-500 text-xs">★★★★★</span>
+                </div>
+                <p class="text-slate-400 text-xs leading-relaxed">"Desarrollo web limpio, veloz y estructurado. Cumplieron con los tiempos estipulados."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-24 px-6 max-w-4xl mx-auto border-t border-zinc-900">
+        <div class="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8 sm:p-12 text-center space-y-6">
+            <h2 class="text-2xl sm:text-3xl font-bold text-white">Iniciar Proyecto</h2>
+            <p class="text-slate-400 text-sm max-w-md mx-auto">
+                Contacto directo para evaluación de requerimientos y cotización de desarrollo.
             </p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto text-left">
-                <!-- WhatsApp Card -->
-                <a href="https://wa.me/5493541232593?text=Hola,%20quiero%20hacer%20una%20consulta" target="_blank" class="bg-zinc-900 p-6 rounded-2xl border border-purple-900/40 hover:border-purple-500 transition-all flex items-center gap-4 group">
-                    <div class="w-12 h-12 bg-green-500/20 text-green-400 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                        💬
-                    </div>
-                    <div>
-                        <div class="text-xs text-slate-400 font-semibold">WhatsApp Directo</div>
-                        <div class="text-sm font-bold text-white">+54 9 3541 232593</div>
-                    </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto text-left">
+                <a href="https://wa.me/5493541232593?text=Hola,%20deseo%20realizar%20una%20consulta" target="_blank" class="bg-zinc-950 p-5 rounded-xl border border-zinc-800 hover:border-purple-500 transition-all">
+                    <div class="text-xs text-slate-500 font-mono uppercase">WhatsApp</div>
+                    <div class="text-sm font-bold text-white mt-1">+54 9 3541 232593</div>
                 </a>
 
-                <!-- Email Card -->
-                <a href="mailto:romisambrano13@icloud.com" class="bg-zinc-900 p-6 rounded-2xl border border-purple-900/40 hover:border-purple-500 transition-all flex items-center gap-4 group">
-                    <div class="w-12 h-12 bg-purple-500/20 text-purple-400 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                        ✉️
-                    </div>
-                    <div>
-                        <div class="text-xs text-slate-400 font-semibold">Correo Electrónico</div>
-                        <div class="text-sm font-bold text-white truncate max-w-[180px]">romisambrano13@icloud.com</div>
-                    </div>
+                <a href="mailto:romisambrano13@icloud.com" class="bg-zinc-950 p-5 rounded-xl border border-zinc-800 hover:border-purple-500 transition-all">
+                    <div class="text-xs text-slate-500 font-mono uppercase">Email</div>
+                    <div class="text-sm font-bold text-white mt-1 truncate">romisambrano13@icloud.com</div>
                 </a>
             </div>
 
-            <div>
-                <a href="https://wa.me/5493541232593?text=Hola,%20quiero%20presupuestar%20un%20proyecto" target="_blank" class="inline-block bg-gradient-to-r from-purple-600 to-pink-600 text-white px-10 py-4 rounded-xl font-black text-lg shadow-xl shadow-purple-600/30 hover:opacity-90 transition-all">
-                    Enviar Mensaje por WhatsApp
+            <div class="pt-4">
+                <a href="https://wa.me/5493541232593?text=Hola,%20deseo%20presupuestar%20un%20proyecto" target="_blank" class="inline-block bg-purple-600 hover:bg-purple-700 text-white px-8 py-3.5 rounded-lg font-medium text-sm transition-all shadow-lg shadow-purple-900/30">
+                    Contactar por WhatsApp
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-8 border-t border-purple-900/20 text-center text-xs text-slate-500 space-y-2">
-        <p>© 2026 DESARROLLO.DEV. Todos los derechos reservados.</p>
+    <footer class="py-8 border-t border-zinc-900 text-center text-xs text-slate-600 font-mono space-y-2">
+        <p>© 2026 DESARROLLO.DEV - Software Solutions</p>
         <div>
-            <a href="politicas.html" class="text-purple-400 hover:underline">Políticas de Privacidad y Seguridad</a>
+            <a href="politicas.html" class="hover:text-slate-400 transition-colors">Términos & Políticas de Seguridad</a>
         </div>
     </footer>
 
-</body>
-</html>
-<!-- Sección de Comentarios y Reseñas -->
-    <section id="resenas" class="py-20 px-6 max-w-5xl mx-auto border-t border-purple-900/20">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-black text-white sm:text-4xl">
-                Experiencias de <span class="text-gradient">Nuestros Clientes</span>
-            </h2>
-            <p class="text-slate-400 mt-2">Conocé lo que opinan sobre nuestros desarrollos y automatizaciones.</p>
-        </div>
-
-        <!-- Formulario para dejar comentario -->
-        <div class="bg-zinc-950 border border-purple-900/40 rounded-2xl p-6 sm:p-8 mb-12 shadow-xl">
-            <h3 class="text-xl font-bold text-white mb-4">Dejá tu opinión</h3>
-            
-            <form id="commentForm" class="space-y-4">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input type="text" id="clientName" placeholder="Tu nombre / Empresa" required
-                        class="bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-purple-500">
-                    
-                    <!-- Selección de Estrellas -->
-                    <div class="flex items-center gap-2 bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3">
-                        <span class="text-xs text-slate-400">Calificación:</span>
-                        <div class="flex text-yellow-400 text-lg cursor-pointer" id="starRating">
-                            <span data-value="1">★</span>
-                            <span data-value="2">★</span>
-                            <span data-value="3">★</span>
-                            <span data-value="4">★</span>
-                            <span data-value="5" class="text-yellow-400">★</span>
-                        </div>
-                    </div>
-                </div>
-
-                <textarea id="clientComment" rows="3" placeholder="Contanos tu experiencia trabajando con nosotros..." required
-                    class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-purple-500"></textarea>
-
-                <button type="submit" 
-                    class="bg-purple-600 hover:bg-purple-700 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all shadow-lg shadow-purple-600/30">
-                    Publicar Reseña
-                </button>
-            </form>
-        </div>
-
-        <!-- Lista de Comentarios -->
-        <div id="commentsList" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Ejemplo inicial 1 -->
-            <div class="bg-zinc-950 border border-purple-900/20 p-6 rounded-2xl space-y-3">
-                <div class="flex justify-between items-center">
-                    <h4 class="font-bold text-white">Marcos G. — Indumentaria</h4>
-                    <span class="text-yellow-400 text-sm">★★★★★</span>
-                </div>
-                <p class="text-slate-400 text-sm">
-                    "El bot de WhatsApp nos ahorró horas de trabajo diario contestando precios. Super recomendable."
-                </p>
-            </div>
-
-            <!-- Ejemplo inicial 2 -->
-            <div class="bg-zinc-950 border border-purple-900/20 p-6 rounded-2xl space-y-3">
-                <div class="flex justify-between items-center">
-                    <h4 class="font-bold text-white">Estudio Contable V.</h4>
-                    <span class="text-yellow-400 text-sm">★★★★★</span>
-                </div>
-                <p class="text-slate-400 text-sm">
-                    "La página web quedó rápida, moderna y nos ayudó a conseguir clientes nuevos en la primera semana."
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Script para agregar comentarios al instante -->
+    <!-- Script de Matrix/Cascada Binaria + Sistema de Estrellas -->
     <script>
+        // --- CASCADA BINARIA (MATRIX EFFECT) ---
+        const canvas = document.getElementById('binaryCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const binaryChars = '01';
+        const fontSize = 14;
+        const columns = Math.floor(canvas.width / fontSize);
+        const drops = Array(columns).fill(1);
+
+        function drawBinary() {
+            ctx.fillStyle = 'rgba(9, 9, 11, 0.15)'; // Limpia con opacidad para el rastro
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#a855f7'; // Color morado/violeta en tono con la web
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = binaryChars.charAt(Math.floor(Math.random() * binaryChars.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        setInterval(drawBinary, 40);
+
+        // --- MANEJO DE ESTRELLAS Y RESEÑAS ---
         let selectedRating = 5;
         const stars = document.querySelectorAll('#starRating span');
 
@@ -266,11 +272,11 @@
                 selectedRating = index + 1;
                 stars.forEach((s, i) => {
                     if (i <= index) {
-                        s.classList.add('text-yellow-400');
-                        s.classList.remove('text-zinc-600');
+                        s.classList.add('text-yellow-500');
+                        s.classList.remove('text-zinc-700');
                     } else {
-                        s.classList.remove('text-yellow-400');
-                        s.classList.add('text-zinc-600');
+                        s.classList.remove('text-yellow-500');
+                        s.classList.add('text-zinc-700');
                     }
                 });
             });
@@ -283,16 +289,19 @@
             const starString = '★'.repeat(selectedRating) + '☆'.repeat(5 - selectedRating);
 
             const newCard = document.createElement('div');
-            newCard.className = 'bg-zinc-950 border border-purple-500/40 p-6 rounded-2xl space-y-3 shadow-lg';
+            newCard.className = 'bg-zinc-900/30 border border-zinc-700 p-6 rounded-xl space-y-2';
             newCard.innerHTML = `
                 <div class="flex justify-between items-center">
-                    <h4 class="font-bold text-white">${name}</h4>
-                    <span class="text-yellow-400 text-sm">${starString}</span>
+                    <h4 class="text-sm font-semibold text-white">${name}</h4>
+                    <span class="text-yellow-500 text-xs">${starString}</span>
                 </div>
-                <p class="text-slate-300 text-sm">"${comment}"</p>
+                <p class="text-slate-300 text-xs leading-relaxed">"${comment}"</p>
             `;
 
             document.getElementById('commentsList').prepend(newCard);
             this.reset();
         });
     </script>
+
+</body>
+</html>
