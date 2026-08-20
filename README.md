@@ -1,6 +1,6 @@
-# [Nombre de tu Marca / Agencia] - Soluciones de Automatización & Web
+#RodiMain- Soluciones de Automatización & Web
 
-Bienvenido al repositorio oficial de **[Nombre de tu Marca]**. Desarrollamos soluciones tecnológicas integrales para optimizar la atención al cliente, automatizar flujos de ventas 24/7 e integrar sistemas web con canales de mensajería.
+Bienvenido al repositorio oficial de **Rodimain**. Desarrollamos soluciones tecnológicas integrales para optimizar la atención al cliente, automatizar flujos de ventas 24/7 e integrar sistemas web con canales de mensajería.
 
 ---
 
