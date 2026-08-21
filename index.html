@@ -29,9 +29,9 @@
 
     <!-- Navbar -->
     <nav class="fixed top-0 w-full z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800/80">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="flex items-center gap-3 text-sm font-mono tracking-widest text-white uppercase">
-                <img src="logo.png" alt="RODI.MAIN Logo" class="w-7 h-7 object-contain">
+                <img src="logo.png" alt="RODI.MAIN Brain Logo" class="w-9 h-9 object-contain rounded-full border border-purple-500/30">
                 &lt;RODI<span class="text-purple-400">.MAIN</span>/&gt;
             </a>
             <div class="hidden md:flex space-x-8 text-xs font-medium text-slate-400">
@@ -46,13 +46,19 @@
         </div>
     </nav>
 
-    <!-- Hero Section con Lluvia Binaria de Fondo -->
+    <!-- Hero Section con Imagen Ilustrativa y Lluvia Binaria -->
     <section class="min-h-screen pt-32 pb-20 px-6 flex flex-col justify-center items-center text-center relative overflow-hidden">
         
         <!-- Canvas para la cascada binaria -->
         <canvas id="binaryCanvas"></canvas>
 
-        <div class="relative z-10 max-w-4xl mx-auto">
+        <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+            <!-- Imagen Principal Ilustrativa -->
+            <div class="mb-8 relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
+                <img src="logo.png" alt="Cerebro Tecnológico RODI.MAIN" class="relative w-48 h-48 md:w-56 md:h-56 object-contain drop-shadow-[0_0_25px_rgba(168,85,247,0.4)]">
+            </div>
+
             <span class="inline-block px-3 py-1 rounded-md text-xs font-mono bg-zinc-900 border border-zinc-800 text-purple-400 mb-6 tracking-wide">
                 RODI.MAIN // SYSTEMS & SOFTWARE ENGINEERING
             </span>
@@ -62,7 +68,7 @@
             </h1>
             
             <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
-                Diseño e implementación de plataformas web escalables, integración de APIs y automatización de procesos de atención al cliente mediante agentes virtuales.
+                Diseño e implementación de plataformas web escalables, integración de APIs y automatización de procesos mediante agentes virtuales.
             </p>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -245,10 +251,10 @@
         const drops = Array(columns).fill(1);
 
         function drawBinary() {
-            ctx.fillStyle = 'rgba(9, 9, 11, 0.15)'; // Limpia con opacidad para el rastro
+            ctx.fillStyle = 'rgba(9, 9, 11, 0.15)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = '#a855f7'; // Color morado/violeta en tono con la web
+            ctx.fillStyle = '#a855f7';
             ctx.font = fontSize + 'px monospace';
 
             for (let i = 0; i < drops.length; i++) {
