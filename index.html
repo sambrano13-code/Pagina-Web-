@@ -176,28 +176,19 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-zinc-900/50 border border-zinc-800/80 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all">
-                <div class="h-40 bg-gradient-to-br from-purple-900/40 to-zinc-900 flex items-center justify-center text-4xl">🌐</div>
-                <div class="p-6">
-                    <h3 class="text-sm font-bold text-white mb-2">Sitio institucional</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">Landing responsiva con formulario de contacto y optimización SEO.</p>
-                </div>
+            <div class="bg-zinc-900/50 border border-zinc-800/80 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all p-6">
+                <h3 class="text-sm font-bold text-white mb-2">Sitio institucional</h3>
+                <p class="text-slate-400 text-xs leading-relaxed">Landing responsiva con formulario de contacto y optimización SEO.</p>
             </div>
 
-            <div class="bg-zinc-900/50 border border-zinc-800/80 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all">
-                <div class="h-40 bg-gradient-to-br from-purple-900/40 to-zinc-900 flex items-center justify-center text-4xl">🤖</div>
-                <div class="p-6">
-                    <h3 class="text-sm font-bold text-white mb-2">Bot de atención al cliente</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">Agente de WhatsApp con respuestas automáticas y derivación comercial.</p>
-                </div>
+            <div class="bg-zinc-900/50 border border-zinc-800/80 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all p-6">
+                <h3 class="text-sm font-bold text-white mb-2">Bot de atención al cliente</h3>
+                <p class="text-slate-400 text-xs leading-relaxed">Agente de WhatsApp con respuestas automáticas y derivación comercial.</p>
             </div>
 
-            <div class="bg-zinc-900/50 border border-zinc-800/80 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all">
-                <div class="h-40 bg-gradient-to-br from-purple-900/40 to-zinc-900 flex items-center justify-center text-4xl">🔗</div>
-                <div class="p-6">
-                    <h3 class="text-sm font-bold text-white mb-2">Integración de pagos</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">Conexión de pasarelas de pago y automatización de pedidos.</p>
-                </div>
+            <div class="bg-zinc-900/50 border border-zinc-800/80 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all p-6">
+                <h3 class="text-sm font-bold text-white mb-2">Integración de pagos</h3>
+                <p class="text-slate-400 text-xs leading-relaxed">Conexión de pasarelas de pago y automatización de pedidos.</p>
             </div>
         </div>
     </section>
@@ -247,11 +238,11 @@
                     <div class="flex items-center gap-2 bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5">
                         <span class="text-xs text-slate-400 font-mono">Calificación:</span>
                         <div class="flex text-sm" id="starRating" role="radiogroup" aria-label="Calificación de 1 a 5 estrellas">
-                            <span data-value="1" class="text-yellow-500 cursor-pointer" role="radio" aria-checked="false" tabindex="0">★</span>
-                            <span data-value="2" class="text-yellow-500 cursor-pointer" role="radio" aria-checked="false" tabindex="0">★</span>
-                            <span data-value="3" class="text-yellow-500 cursor-pointer" role="radio" aria-checked="false" tabindex="0">★</span>
-                            <span data-value="4" class="text-yellow-500 cursor-pointer" role="radio" aria-checked="false" tabindex="0">★</span>
-                            <span data-value="5" class="text-yellow-500 cursor-pointer" role="radio" aria-checked="true" tabindex="0">★</span>
+                            <span data-value="1" class="text-yellow-500 cursor-pointer" role="radio" aria-checked="false" tabindex="0">*</span>
+                            <span data-value="2" class="text-yellow-500 cursor-pointer" role="radio" aria-checked="false" tabindex="0">*</span>
+                            <span data-value="3" class="text-yellow-500 cursor-pointer" role="radio" aria-checked="false" tabindex="0">*</span>
+                            <span data-value="4" class="text-yellow-500 cursor-pointer" role="radio" aria-checked="false" tabindex="0">*</span>
+                            <span data-value="5" class="text-yellow-500 cursor-pointer" role="radio" aria-checked="true" tabindex="0">*</span>
                         </div>
                     </div>
                 </div>
@@ -383,7 +374,7 @@
             { keys: ['precio', 'tarifa', 'costo', 'cuanto'], reply: 'Los presupuestos se arman a medida según el proyecto. Contanos qué necesitás y te paso una cotización por WhatsApp.' },
             { keys: ['horario', 'atienden', 'abierto'], reply: 'Horario operativo: Lunes a Sábado de 09:00 a 20:00 HS. Fuera de ese horario, tu mensaje queda en cola y te respondemos apenas abrimos.' },
             { keys: ['catalogo', 'catálogo', 'servicios'], reply: 'Trabajamos en páginas web, bots de atención al cliente e integración de APIs. ¿Sobre cuál querés más info?' },
-            { keys: ['hola', 'buenas'], reply: '¡Hola! Soy el asistente de RODI.MAIN. Preguntame por "precio", "horario" o "catálogo".' }
+            { keys: ['hola', 'buenas'], reply: 'Hola. Soy el asistente de RODI.MAIN. Preguntame por precio, horario o catálogo.' }
         ];
 
         function addBotMessage(text, fromUser) {
@@ -452,7 +443,7 @@
 
             const starsEl = document.createElement('span');
             starsEl.className = 'text-yellow-500 text-xs';
-            starsEl.textContent = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+            starsEl.textContent = '*'.repeat(review.rating);
 
             header.appendChild(name);
             header.appendChild(starsEl);
