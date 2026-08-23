@@ -4,15 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RODI.MAIN — Soluciones Tecnológicas & Bots</title>
+
+    <!-- SEO / Meta descripción -->
+    <meta name="description" content="RODI.MAIN — Desarrollo de software, sistemas web y bots de automatización para negocios. Plataformas escalables, integración de APIs y agentes virtuales.">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Vista previa al compartir (WhatsApp, redes) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="RODI.MAIN — Soluciones Tecnológicas & Bots">
+    <meta property="og:description" content="Desarrollo de software, sistemas web y bots de automatización para negocios.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:locale" content="es_AR">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Datos estructurados para buscadores -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "RODI.MAIN",
+        "description": "Desarrollo de software, sistemas web y bots de automatización.",
+        "email": "romisambrano13@icloud.com",
+        "image": "logo.png"
+    }
+    </script>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Fuente Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!--
+      ANALYTICS: para saber cuánta gente visita el sitio, creá una cuenta gratis
+      en https://plausible.io o https://analytics.google.com y pegá su script acá.
+      Lo dejo comentado porque necesita tu ID propio:
+
+      <script defer data-domain="tudominio.com" src="https://plausible.io/js/script.js"></script>
+    -->
+
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #09090b; }
-        /* Canvas Matrix / Binary Background */
         #binaryCanvas {
             position: absolute;
             top: 0;
@@ -23,6 +58,15 @@
             opacity: 0.25;
             pointer-events: none;
         }
+        @media (prefers-reduced-motion: reduce) {
+            #binaryCanvas { display: none; }
+        }
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+            outline: 2px solid #c084fc;
+            outline-offset: 2px;
+        }
+        #mobileMenu.open { max-height: 320px; }
+        #mobileMenu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
     </style>
 </head>
 <body class="bg-zinc-950 text-slate-100 antialiased selection:bg-purple-900 selection:text-white">
@@ -31,48 +75,71 @@
     <nav class="fixed top-0 w-full z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800/80">
         <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="flex items-center gap-3 text-sm font-mono tracking-widest text-white uppercase">
-                <img src="Logo Coach Moderno Morado.png" alt="RODI.MAIN Brain Logo" class="w-9 h-9 object-contain rounded-full border border-purple-500/30">
+                <img src="logo.png" alt="RODI.MAIN Brain Logo" class="w-9 h-9 object-contain rounded-full border border-purple-500/30">
                 &lt;RODI<span class="text-purple-400">.MAIN</span>/&gt;
             </a>
+
             <div class="hidden md:flex space-x-8 text-xs font-medium text-slate-400">
                 <a href="#soluciones" class="hover:text-white transition-colors">Soluciones</a>
+                <a href="#portfolio" class="hover:text-white transition-colors">Casos</a>
                 <a href="#bot-demo" class="hover:text-white transition-colors">Demostración</a>
                 <a href="#resenas" class="hover:text-white transition-colors">Evaluaciones</a>
                 <a href="#contacto" class="hover:text-white transition-colors">Contacto</a>
             </div>
-            <a href="https://wa.me/5493541232593?text=Hola,%20requiero%20asesoramiento%20tecnico" target="_blank" class="bg-zinc-900 border border-zinc-700 hover:border-purple-500 text-white px-4 py-2 rounded-lg font-mono text-xs transition-all">
-                CONSULTAR
-            </a>
+
+            <div class="flex items-center gap-3">
+                <a href="#" data-wa-msg="Hola,%20requiero%20asesoramiento%20tecnico" target="_blank" class="wa-link hidden sm:inline-block bg-zinc-900 border border-zinc-700 hover:border-purple-500 text-white px-4 py-2 rounded-lg font-mono text-xs transition-all">
+                    CONSULTAR
+                </a>
+                <button id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden text-white p-2">
+                    <svg id="iconOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="iconClose" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="md:hidden border-t border-zinc-800/80 bg-zinc-950/95">
+            <div class="flex flex-col px-6 py-4 space-y-4 text-sm text-slate-300">
+                <a href="#soluciones" class="mobile-link hover:text-white transition-colors">Soluciones</a>
+                <a href="#portfolio" class="mobile-link hover:text-white transition-colors">Casos</a>
+                <a href="#bot-demo" class="mobile-link hover:text-white transition-colors">Demostración</a>
+                <a href="#resenas" class="mobile-link hover:text-white transition-colors">Evaluaciones</a>
+                <a href="#contacto" class="mobile-link hover:text-white transition-colors">Contacto</a>
+                <a href="#" data-wa-msg="Hola,%20requiero%20asesoramiento%20tecnico" target="_blank" class="wa-link inline-block text-center bg-purple-600 text-white px-4 py-2.5 rounded-lg font-mono text-xs">
+                    CONSULTAR
+                </a>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section con Imagen Ilustrativa y Lluvia Binaria -->
+    <!-- Hero Section -->
     <section class="min-h-screen pt-32 pb-20 px-6 flex flex-col justify-center items-center text-center relative overflow-hidden">
-        
-        <!-- Canvas para la cascada binaria -->
         <canvas id="binaryCanvas"></canvas>
 
         <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
-            <!-- Imagen Principal Ilustrativa -->
             <div class="mb-8 relative group">
                 <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
-                <img src="Logo Coach Moderno Morado.png" alt="Cerebro Tecnológico RODI.MAIN" class="relative w-48 h-48 md:w-56 md:h-56 object-contain drop-shadow-[0_0_25px_rgba(168,85,247,0.4)]">
+                <img src="logo.png" alt="Cerebro Tecnológico RODI.MAIN" class="relative w-48 h-48 md:w-56 md:h-56 object-contain drop-shadow-[0_0_25px_rgba(168,85,247,0.4)]">
             </div>
 
-            <span class="inline-block px-3 py-1 rounded-md text-xs font-mono bg-zinc-900 border border-zinc-800 text-purple-400 mb-6 tracking-wide">
+            <span class="inline-block px-3 py-1 rounded-md text-xs font-mono bg-zinc-900 border border-zinc-800 text-purple-300 mb-6 tracking-wide">
                 RODI.MAIN // SYSTEMS & SOFTWARE ENGINEERING
             </span>
-            
+
             <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
                 Desarrollo de Software, Sistemas Web & Arquitectura de Bots
             </h1>
-            
+
             <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
                 Diseño e implementación de plataformas web escalables, integración de APIs y automatización de procesos mediante agentes virtuales.
             </p>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://wa.me/5493541232593?text=Hola,%20quiero%20probar%20la%20demo" target="_blank" class="bg-purple-600 hover:bg-purple-700 text-white px-7 py-3.5 rounded-lg font-medium text-sm transition-all shadow-lg shadow-purple-900/30">
+                <a href="#bot-demo" class="bg-purple-600 hover:bg-purple-700 text-white px-7 py-3.5 rounded-lg font-medium text-sm transition-all shadow-lg shadow-purple-900/30">
                     Probar Demostración
                 </a>
                 <a href="#soluciones" class="bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-slate-300 px-7 py-3.5 rounded-lg font-medium text-sm transition-all">
@@ -82,61 +149,92 @@
         </div>
     </section>
 
-    <!-- Arquitectura / Soluciones -->
+    <!-- Soluciones -->
     <section id="soluciones" class="py-24 px-6 max-w-7xl mx-auto border-t border-zinc-900">
         <div class="mb-16">
-            <span class="text-xs font-mono text-purple-400 uppercase tracking-widest">// Servicios</span>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2">Soluciones de Software</h2>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white">Soluciones de Software</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="bg-zinc-900/50 border border-zinc-800/80 p-8 rounded-xl hover:border-purple-500/50 transition-all">
-                <div class="text-xs font-mono text-purple-400 mb-3">01. WEB PLATFORMS</div>
+                <div class="text-xs font-mono text-purple-300 mb-3">01. WEB PLATFORMS</div>
                 <h3 class="text-lg font-bold text-white mb-2">Páginas Web & E-Commerce</h3>
                 <p class="text-slate-400 text-sm leading-relaxed">Desarrollo frontend responsivo optimizado para SEO, tiempos de carga mínimos y alta tasa de conversión.</p>
             </div>
 
             <div class="bg-zinc-900/50 border border-zinc-800/80 p-8 rounded-xl hover:border-purple-500/50 transition-all">
-                <div class="text-xs font-mono text-purple-400 mb-3">02. AUTOMATION</div>
+                <div class="text-xs font-mono text-purple-300 mb-3">02. AUTOMATION</div>
                 <h3 class="text-lg font-bold text-white mb-2">Agentes de Conversación</h3>
                 <p class="text-slate-400 text-sm leading-relaxed">Bots para WhatsApp con lógica condicional, respuesta inmediata a preguntas frecuentes y derivación directa.</p>
             </div>
 
             <div class="bg-zinc-900/50 border border-zinc-800/80 p-8 rounded-xl hover:border-purple-500/50 transition-all">
-                <div class="text-xs font-mono text-purple-400 mb-3">03. INTEGRATIONS</div>
+                <div class="text-xs font-mono text-purple-300 mb-3">03. INTEGRATIONS</div>
                 <h3 class="text-lg font-bold text-white mb-2">Integración de APIs & Backend</h3>
                 <p class="text-slate-400 text-sm leading-relaxed">Conexión de bases de datos, webhooks y pasarelas de pago para automatizar la gestión comercial.</p>
             </div>
         </div>
     </section>
 
-    <!-- Simulador de Bot -->
+    <!-- Portfolio / Casos -->
+    <section id="portfolio" class="py-24 px-6 max-w-7xl mx-auto border-t border-zinc-900">
+        <div class="mb-16">
+            <h2 class="text-2xl sm:text-3xl font-bold text-white">Casos & Proyectos</h2>
+            <p class="text-slate-400 text-sm mt-2 max-w-xl">Algunos ejemplos del tipo de trabajo que desarrollamos. Reemplazá estos textos con tus proyectos reales.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-zinc-900/50 border border-zinc-800/80 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all">
+                <div class="h-40 bg-gradient-to-br from-purple-900/40 to-zinc-900 flex items-center justify-center text-4xl">🌐</div>
+                <div class="p-6">
+                    <h3 class="text-sm font-bold text-white mb-2">Sitio institucional</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">Landing responsiva con formulario de contacto y optimización SEO para un negocio local.</p>
+                </div>
+            </div>
+
+            <div class="bg-zinc-900/50 border border-zinc-800/80 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all">
+                <div class="h-40 bg-gradient-to-br from-purple-900/40 to-zinc-900 flex items-center justify-center text-4xl">🤖</div>
+                <div class="p-6">
+                    <h3 class="text-sm font-bold text-white mb-2">Bot de atención al cliente</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">Agente de WhatsApp con respuestas automáticas y derivación a un asesor humano.</p>
+                </div>
+            </div>
+
+            <div class="bg-zinc-900/50 border border-zinc-800/80 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all">
+                <div class="h-40 bg-gradient-to-br from-purple-900/40 to-zinc-900 flex items-center justify-center text-4xl">🔗</div>
+                <div class="p-6">
+                    <h3 class="text-sm font-bold text-white mb-2">Integración de pagos</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">Conexión de pasarela de pago y automatización de la confirmación de pedidos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulador de Bot INTERACTIVO -->
     <section id="bot-demo" class="py-24 px-6 max-w-5xl mx-auto border-t border-zinc-900">
         <div class="mb-12">
-            <span class="text-xs font-mono text-purple-400 uppercase tracking-widest">// Demo Interpuesta</span>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2">Flujo de Automatización</h2>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white">Flujo de Automatización</h2>
+            <p class="text-slate-400 text-sm mt-2">Escribí una consulta como la haría un cliente y probá cómo respondería el bot.</p>
         </div>
 
         <div class="bg-zinc-900/60 border border-zinc-800 rounded-xl p-6 sm:p-10">
-            <div class="max-w-md mx-auto bg-zinc-950 rounded-lg p-4 border border-zinc-800 font-mono text-xs space-y-4">
-                <div class="flex justify-end">
-                    <div class="bg-purple-950/80 border border-purple-800/50 text-slate-200 rounded-lg px-3 py-2 max-w-[85%]">
-                        > Consulta: Disponibilidad y tarifas de servicios.
-                    </div>
-                </div>
-
-                <div class="flex justify-start">
-                    <div class="bg-zinc-900 border border-zinc-800 text-slate-300 rounded-lg px-3 py-2.5 max-w-[90%] space-y-2">
-                        <p class="text-purple-400">[RODI.MAIN SYSTEM]: Mensaje recibido 24/7</p>
-                        <p>Atención automatizada activa.</p>
-                        <p>Horario operativo: Lunes a Sábado - 09:00 a 20:00 HS.</p>
-                        <div class="pt-2">
-                            <a href="https://wa.me/5493541232593?text=Solicitar%20Catalogo" target="_blank" class="block text-center bg-zinc-800 hover:bg-purple-900/50 border border-zinc-700 text-white rounded py-2 transition-all">
-                                [ SOLICITAR CATÁLOGO ]
-                            </a>
+            <div class="max-w-md mx-auto bg-zinc-950 rounded-lg p-4 border border-zinc-800 font-mono text-xs">
+                <div id="botChat" class="space-y-4 max-h-80 overflow-y-auto mb-4 pr-1">
+                    <div class="flex justify-start">
+                        <div class="bg-zinc-900 border border-zinc-800 text-slate-300 rounded-lg px-3 py-2.5 max-w-[90%] space-y-2">
+                            <p class="text-purple-300">[RODI.MAIN SYSTEM]: Mensaje recibido 24/7</p>
+                            <p>Atención automatizada activa. Escribí "precio", "horario" o "catálogo" para probar.</p>
                         </div>
                     </div>
                 </div>
+                <form id="botForm" class="flex gap-2">
+                    <label for="botInput" class="sr-only">Escribí tu consulta</label>
+                    <input id="botInput" type="text" placeholder="Escribí tu consulta..." maxlength="120"
+                        class="flex-1 bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-purple-500">
+                    <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-xs transition-all">
+                        Enviar
+                    </button>
+                </form>
             </div>
         </div>
     </section>
@@ -144,33 +242,33 @@
     <!-- Reseñas -->
     <section id="resenas" class="py-24 px-6 max-w-5xl mx-auto border-t border-zinc-900">
         <div class="mb-12">
-            <span class="text-xs font-mono text-purple-400 uppercase tracking-widest">// Feedback</span>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2">Evaluaciones de Clientes</h2>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white">Evaluaciones de Clientes</h2>
         </div>
 
         <div class="bg-zinc-900/40 border border-zinc-800 rounded-xl p-6 mb-12">
             <h3 class="text-sm font-semibold text-white mb-4">Registrar Opinión</h3>
+            <p class="text-[11px] text-slate-500 mb-4">* Tu opinión queda guardada en este navegador. Para mostrarla a todos los visitantes, este formulario necesita conectarse a un servicio externo (backend o Formspree).</p>
             <form id="commentForm" class="space-y-4">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input type="text" id="clientName" placeholder="Nombre / Empresa" required
+                    <input type="text" id="clientName" placeholder="Nombre / Empresa" required maxlength="60"
                         class="bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-purple-500">
-                    
+
                     <div class="flex items-center gap-2 bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5">
                         <span class="text-xs text-slate-400 font-mono">Calificación:</span>
-                        <div class="flex text-yellow-500 text-sm cursor-pointer" id="starRating">
-                            <span data-value="1">★</span>
-                            <span data-value="2">★</span>
-                            <span data-value="3">★</span>
-                            <span data-value="4">★</span>
-                            <span data-value="5">★</span>
+                        <div class="flex text-sm" id="starRating" role="radiogroup" aria-label="Calificación de 1 a 5 estrellas">
+                            <span data-value="1" class="text-yellow-500 cursor-pointer" role="radio" aria-checked="false" tabindex="0">★</span>
+                            <span data-value="2" class="text-yellow-500 cursor-pointer" role="radio" aria-checked="false" tabindex="0">★</span>
+                            <span data-value="3" class="text-yellow-500 cursor-pointer" role="radio" aria-checked="false" tabindex="0">★</span>
+                            <span data-value="4" class="text-yellow-500 cursor-pointer" role="radio" aria-checked="false" tabindex="0">★</span>
+                            <span data-value="5" class="text-yellow-500 cursor-pointer" role="radio" aria-checked="true" tabindex="0">★</span>
                         </div>
                     </div>
                 </div>
 
-                <textarea id="clientComment" rows="3" placeholder="Detalle de la experiencia..." required
+                <textarea id="clientComment" rows="3" placeholder="Detalle de la experiencia..." required maxlength="400"
                     class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-purple-500"></textarea>
 
-                <button type="submit" 
+                <button type="submit"
                     class="bg-zinc-800 hover:bg-zinc-700 text-white font-medium px-5 py-2.5 rounded-lg text-xs transition-all border border-zinc-700">
                     Enviar Registro
                 </button>
@@ -178,21 +276,7 @@
         </div>
 
         <div id="commentsList" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-zinc-900/30 border border-zinc-800 p-6 rounded-xl space-y-2">
-                <div class="flex justify-between items-center">
-                    <h4 class="text-sm font-semibold text-white">Marcos G. — Indumentaria</h4>
-                    <span class="text-yellow-500 text-xs">★★★★★</span>
-                </div>
-                <p class="text-slate-400 text-xs leading-relaxed">"Optimización correcta en la atención inicial de WhatsApp. Redujo los tiempos de respuesta."</p>
-            </div>
-
-            <div class="bg-zinc-900/30 border border-zinc-800 p-6 rounded-xl space-y-2">
-                <div class="flex justify-between items-center">
-                    <h4 class="text-sm font-semibold text-white">Estudio Contable V.</h4>
-                    <span class="text-yellow-500 text-xs">★★★★★</span>
-                </div>
-                <p class="text-slate-400 text-xs leading-relaxed">"Desarrollo web limpio, veloz y estructurado. Cumplieron con los tiempos estipulados."</p>
-            </div>
+            <!-- Reseñas de ejemplo + las guardadas en localStorage -->
         </div>
     </section>
 
@@ -205,7 +289,7 @@
             </p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto text-left">
-                <a href="https://wa.me/5493541232593?text=Hola,%20deseo%20realizar%20una%20consulta" target="_blank" class="bg-zinc-950 p-5 rounded-xl border border-zinc-800 hover:border-purple-500 transition-all">
+                <a href="#" data-wa-msg="Hola,%20deseo%20realizar%20una%20consulta" target="_blank" class="wa-link bg-zinc-950 p-5 rounded-xl border border-zinc-800 hover:border-purple-500 transition-all">
                     <div class="text-xs text-slate-500 font-mono uppercase">WhatsApp</div>
                     <div class="text-sm font-bold text-white mt-1">+54 9 3541 232593</div>
                 </a>
@@ -217,10 +301,23 @@
             </div>
 
             <div class="pt-4">
-                <a href="https://wa.me/5493541232593?text=Hola,%20deseo%20presupuestar%20un%20proyecto" target="_blank" class="inline-block bg-purple-600 hover:bg-purple-700 text-white px-8 py-3.5 rounded-lg font-medium text-sm transition-all shadow-lg shadow-purple-900/30">
+                <a href="#" data-wa-msg="Hola,%20deseo%20presupuestar%20un%20proyecto" target="_blank" class="wa-link inline-block bg-purple-600 hover:bg-purple-700 text-white px-8 py-3.5 rounded-lg font-medium text-sm transition-all shadow-lg shadow-purple-900/30">
                     Contactar por WhatsApp
                 </a>
             </div>
+
+            <!--
+              FORMULARIO ALTERNATIVO POR MAIL:
+              1. Creá una cuenta gratis en https://formspree.io
+              2. Te dan una URL tipo https://formspree.io/f/xxxxxxx
+              3. Reemplazá "TU_ID_DE_FORMSPREE" abajo por esa URL y sacá el comentario.
+
+              <form action="https://formspree.io/f/TU_ID_DE_FORMSPREE" method="POST" class="pt-6 space-y-3 text-left max-w-md mx-auto">
+                  <input type="email" name="email" placeholder="Tu email" required class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-purple-500">
+                  <textarea name="message" rows="3" placeholder="Contanos qué necesitás" required class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-purple-500"></textarea>
+                  <button type="submit" class="bg-zinc-800 hover:bg-zinc-700 text-white font-medium px-5 py-2.5 rounded-lg text-xs transition-all border border-zinc-700 w-full">Enviar por mail</button>
+              </form>
+            -->
         </div>
     </section>
 
@@ -232,11 +329,39 @@
         </div>
     </footer>
 
-    <!-- Script de Matrix/Cascada Binaria + Sistema de Estrellas -->
     <script>
+        // --- NÚMERO DE WHATSAPP CENTRALIZADO ---
+        const WHATSAPP_NUMBER = '5493541232593';
+        document.querySelectorAll('.wa-link').forEach(link => {
+            const msg = link.getAttribute('data-wa-msg') || '';
+            link.setAttribute('href', `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`);
+        });
+
+        // --- MENÚ MOBILE ---
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const iconOpen = document.getElementById('iconOpen');
+        const iconClose = document.getElementById('iconClose');
+
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            iconOpen.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+        }
+        function toggleMenu() {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            iconOpen.classList.toggle('hidden', isOpen);
+            iconClose.classList.toggle('hidden', !isOpen);
+        }
+        menuToggle.addEventListener('click', toggleMenu);
+        document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', closeMenu));
+
         // --- CASCADA BINARIA (MATRIX EFFECT) ---
         const canvas = document.getElementById('binaryCanvas');
         const ctx = canvas.getContext('2d');
+        let matrixInterval = null;
 
         function resizeCanvas() {
             canvas.width = canvas.parentElement.offsetWidth;
@@ -253,59 +378,143 @@
         function drawBinary() {
             ctx.fillStyle = 'rgba(9, 9, 11, 0.15)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-
             ctx.fillStyle = '#a855f7';
             ctx.font = fontSize + 'px monospace';
-
             for (let i = 0; i < drops.length; i++) {
                 const text = binaryChars.charAt(Math.floor(Math.random() * binaryChars.length));
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
                 drops[i]++;
             }
         }
-        setInterval(drawBinary, 40);
+        function startMatrix() { if (!matrixInterval) matrixInterval = setInterval(drawBinary, 40); }
+        function stopMatrix() { clearInterval(matrixInterval); matrixInterval = null; }
 
-        // --- MANEJO DE ESTRELLAS Y RESEÑAS ---
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!prefersReducedMotion) {
+            startMatrix();
+            document.addEventListener('visibilitychange', () => document.hidden ? stopMatrix() : startMatrix());
+        }
+
+        // --- DEMO DE BOT INTERACTIVA ---
+        const botChat = document.getElementById('botChat');
+        const botForm = document.getElementById('botForm');
+        const botInput = document.getElementById('botInput');
+
+        const BOT_RESPONSES = [
+            { keys: ['precio', 'tarifa', 'costo', 'cuanto'], reply: 'Los presupuestos se arman a medida según el proyecto. Contanos qué necesitás y te paso una cotización por WhatsApp.' },
+            { keys: ['horario', 'atienden', 'abierto'], reply: 'Horario operativo: Lunes a Sábado de 09:00 a 20:00 HS. Fuera de ese horario, tu mensaje queda en cola y te respondemos apenas abrimos.' },
+            { keys: ['catalogo', 'catálogo', 'servicios'], reply: 'Trabajamos en páginas web, bots de atención al cliente e integración de APIs. ¿Sobre cuál querés más info?' },
+            { keys: ['hola', 'buenas'], reply: '¡Hola! Soy el asistente de RODI.MAIN. Preguntame por "precio", "horario" o "catálogo".' }
+        ];
+
+        function addBotMessage(text, fromUser) {
+            const wrapper = document.createElement('div');
+            wrapper.className = fromUser ? 'flex justify-end' : 'flex justify-start';
+
+            const bubble = document.createElement('div');
+            bubble.className = fromUser
+                ? 'bg-purple-950/80 border border-purple-800/50 text-slate-200 rounded-lg px-3 py-2 max-w-[85%]'
+                : 'bg-zinc-900 border border-zinc-800 text-slate-300 rounded-lg px-3 py-2.5 max-w-[90%]';
+            bubble.textContent = (fromUser ? '> ' : '') + text;
+
+            wrapper.appendChild(bubble);
+            botChat.appendChild(wrapper);
+            botChat.scrollTop = botChat.scrollHeight;
+        }
+
+        botForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const value = botInput.value.trim();
+            if (!value) return;
+
+            addBotMessage(value, true);
+
+            const lower = value.toLowerCase();
+            const match = BOT_RESPONSES.find(r => r.keys.some(k => lower.includes(k)));
+            const reply = match ? match.reply : 'Recibimos tu consulta. Un asesor te va a responder por WhatsApp a la brevedad.';
+
+            setTimeout(() => addBotMessage(reply, false), 500);
+            botInput.value = '';
+        });
+
+        // --- ESTRELLAS (con soporte de teclado) ---
         let selectedRating = 5;
         const stars = document.querySelectorAll('#starRating span');
 
+        function setRating(index) {
+            selectedRating = index + 1;
+            stars.forEach((s, i) => {
+                const active = i <= index;
+                s.classList.toggle('text-yellow-500', active);
+                s.classList.toggle('text-zinc-700', !active);
+                s.setAttribute('aria-checked', String(i === index));
+            });
+        }
         stars.forEach((star, index) => {
-            star.addEventListener('click', () => {
-                selectedRating = index + 1;
-                stars.forEach((s, i) => {
-                    if (i <= index) {
-                        s.classList.add('text-yellow-500');
-                        s.classList.remove('text-zinc-700');
-                    } else {
-                        s.classList.remove('text-yellow-500');
-                        s.classList.add('text-zinc-700');
-                    }
-                });
+            star.addEventListener('click', () => setRating(index));
+            star.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setRating(index); }
             });
         });
 
+        // --- RESEÑAS (ejemplo + localStorage) ---
+        const STORAGE_KEY = 'rodimain_reviews';
+        const SAMPLE_REVIEWS = [
+            { name: 'Comercio Local SRL', comment: 'Nos armaron el bot de WhatsApp en pocos días, funciona muy bien y nos ahorra tiempo de atención.', rating: 5 },
+            { name: 'Estudio Contable Paredes', comment: 'Buena comunicación y entrega en tiempo. Recomendable para páginas institucionales.', rating: 4 }
+        ];
+
+        function renderReview(review) {
+            const card = document.createElement('div');
+            card.className = 'bg-zinc-900/30 border border-zinc-700 p-6 rounded-xl space-y-2';
+
+            const header = document.createElement('div');
+            header.className = 'flex justify-between items-center';
+
+            const name = document.createElement('h4');
+            name.className = 'text-sm font-semibold text-white';
+            name.textContent = review.name;
+
+            const starsEl = document.createElement('span');
+            starsEl.className = 'text-yellow-500 text-xs';
+            starsEl.textContent = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+
+            header.appendChild(name);
+            header.appendChild(starsEl);
+
+            const comment = document.createElement('p');
+            comment.className = 'text-slate-300 text-xs leading-relaxed';
+            comment.textContent = `"${review.comment}"`;
+
+            card.appendChild(header);
+            card.appendChild(comment);
+            document.getElementById('commentsList').appendChild(card);
+        }
+
+        function loadReviews() {
+            SAMPLE_REVIEWS.forEach(renderReview);
+            const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            saved.forEach(renderReview);
+        }
+        loadReviews();
+
         document.getElementById('commentForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const name = document.getElementById('clientName').value;
-            const comment = document.getElementById('clientComment').value;
-            const starString = '★'.repeat(selectedRating) + '☆'.repeat(5 - selectedRating);
+            const review = {
+                name: document.getElementById('clientName').value.trim(),
+                comment: document.getElementById('clientComment').value.trim(),
+                rating: selectedRating
+            };
+            if (!review.name || !review.comment) return;
 
-            const newCard = document.createElement('div');
-            newCard.className = 'bg-zinc-900/30 border border-zinc-700 p-6 rounded-xl space-y-2';
-            newCard.innerHTML = `
-                <div class="flex justify-between items-center">
-                    <h4 class="text-sm font-semibold text-white">${name}</h4>
-                    <span class="text-yellow-500 text-xs">${starString}</span>
-                </div>
-                <p class="text-slate-300 text-xs leading-relaxed">"${comment}"</p>
-            `;
+            renderReview(review);
+            const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            saved.push(review);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
 
-            document.getElementById('commentsList').prepend(newCard);
             this.reset();
+            setRating(4);
         });
     </script>
 </body>
